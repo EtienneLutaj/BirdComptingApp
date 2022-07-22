@@ -10,7 +10,7 @@ import (
 )
 
 type Bird struct {
-	ID       string `json:"id`
+	ID       string `json:"id"`
 	BirdName string `json:"birdname"`
 	//NumberOfBirds int    `json:"numberofbirds"`
 }
@@ -76,7 +76,13 @@ func GetNumberOfAllBirds() map[string]int {
 
 	for _, bird := range birds {
 
-		BirdMap[bird.BirdName]++ //pas sur que ça marche et que ça parte bien de 0
+		v, ok := BirdMap[bird.BirdName]
+
+		if ok {
+			BirdMap[bird.BirdName] = v + 1
+		} else {
+			BirdMap[bird.BirdName] = 1
+		}
 
 	}
 
@@ -89,6 +95,6 @@ func main() {
 	fmt.Print("miaou miaou")
 	router.POST("/bird", PostBird)
 	router.GET("/bird", GetBird)
-	router.GET("bird", GetBirds)
+	router.GET("/bird", GetBirds)
 	router.Run("localhost:8080")
 }
