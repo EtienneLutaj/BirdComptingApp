@@ -18,7 +18,7 @@ func RegisterNewBird(newBird Bird) {
 
 }
 
-func GetNumberOfOneBird(birdName string) int {
+func GetNumberOfOneBird(birdName string) int { //ajouter option lowercase
 
 	a := 0
 
@@ -40,7 +40,7 @@ func GetNumberOfOneBird(birdName string) int {
 
 }
 
-func GetNumberOfAllBirds() map[string]int {
+func GetNumberOfAllBirds() map[string]int { //ajouter option lowercase
 
 	BirdMap := make(map[string]int)
 
