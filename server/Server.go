@@ -1,6 +1,9 @@
 package server
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 type Bird struct {
 	ID       string `json:"id"`
@@ -8,7 +11,9 @@ type Bird struct {
 	//NumberOfBirds int    `json:"numberofbirds"`
 }
 
-var birds []Bird
+var testbirdB Bird = Bird{"7", "testbirdB"} //possibilité de changer l'id si besoin
+
+var birds []Bird = []Bird{testbirdB}
 
 func RegisterNewBird(newBird Bird) {
 
@@ -24,7 +29,7 @@ func GetNumberOfOneBird(birdName string) int { //ajouter option lowercase
 
 	for _, b := range birds {
 
-		if b.BirdName == birdName {
+		if strings.ToLower(b.BirdName) == strings.ToLower(birdName) {
 			a++
 		}
 
@@ -46,12 +51,12 @@ func GetNumberOfAllBirds() map[string]int { //ajouter option lowercase
 
 	for _, bird := range birds {
 
-		v, ok := BirdMap[bird.BirdName]
+		v, ok := BirdMap[strings.ToLower(bird.BirdName)]
 
 		if ok {
-			BirdMap[bird.BirdName] = v + 1
+			BirdMap[strings.ToLower(bird.BirdName)] = v + 1
 		} else {
-			BirdMap[bird.BirdName] = 1
+			BirdMap[strings.ToLower(bird.BirdName)] = 1
 		}
 
 	}

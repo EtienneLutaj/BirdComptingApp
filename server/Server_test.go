@@ -46,7 +46,7 @@ func TestGetNumberOfAllBirds(t *testing.T) {
 
 	c := GetNumberOfAllBirds()
 
-	if c["teSTbiRDA"] != 0 || c["TeStBiRdB"] != 1 {
+	if c["testbirda"] != 0 || c["testbirdb"] != 1 {
 		t.Errorf("GetNumberOfAllBirds ne renvoie pas le map attendue.\n")
 	}
 
