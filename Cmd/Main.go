@@ -6,7 +6,6 @@ import (
 
 	"github.com/gin-gonic/gin"
 	//Server_test
-	//Server
 )
 
 type Bird struct {
