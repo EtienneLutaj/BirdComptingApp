@@ -91,9 +91,8 @@ func GetNumberOfAllBirds() map[string]int {
 
 func main() {
 	router := gin.Default()
-	fmt.Print("miaou miaou")
 	router.POST("/bird", PostBird)
-	router.GET("/bird", GetBird)
+	router.GET("/bird/:birdname", GetBird)
 	router.GET("/bird", GetBirds)
 	router.Run("localhost:8080")
 }
