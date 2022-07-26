@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/EtienneLutaj/BirdComptingApp/server"
+	"github.com/EtienneLutaj/BirdComptingApp/server" //un peu long, dommage de ne pas pouvoir simplement mettre "server" ...
 
 	"flag"
 
@@ -14,7 +14,6 @@ import (
 //make(chan int) ?
 
 func PostBird(context *gin.Context) {
-
 	var newBird server.Bird
 
 	if err := context.BindJSON(&newBird); err != nil {
@@ -23,19 +22,16 @@ func PostBird(context *gin.Context) {
 	}
 
 	context.IndentedJSON(http.StatusCreated, newBird)
-
 	server.RegisterNewBird(newBird)
-
 }
 
-func GetBird(context *gin.Context) {
+func GetBird(context *gin.Context) { //GetBird sans s à ne pas confondre avec GetBirs juste en dessous !
 	birdName := context.Param("birdname")
 	number := server.GetNumberOfOneBird(birdName)
-
 	context.IndentedJSON(http.StatusOK, number)
 }
 
-func GetBirds(context *gin.Context) {
+func GetBirds(context *gin.Context) { //GetBirds avec s !
 	BirdMap := server.GetNumberOfAllBirds()
 	context.IndentedJSON(http.StatusOK, BirdMap)
 }

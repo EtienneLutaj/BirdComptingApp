@@ -29,7 +29,7 @@ func TestRegisterNewBird(t *testing.T) {
 
 func TestGetNumberOfOneBird(t *testing.T) {
 
-	a := GetNumberOfOneBird("tesTBIrdA")
+	a := GetNumberOfOneBird("tesTBIrdA") // mélange de majuscules et minuscules pour tester la resistance à la casse
 	b := GetNumberOfOneBird("teStbiRdB")
 
 	if a != 0 {

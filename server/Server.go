@@ -11,9 +11,8 @@ type Bird struct {
 	NumberOfBirds int    `json:"numberofbirds"`
 }
 
-var testbirdB Bird = Bird{"7", "testbirdB", 1} //possibilité de changer l'id si besoin
-
-var birds []Bird = []Bird{testbirdB}
+var testbirdB Bird = Bird{"7", "testbirdB", 1} //possibilité de changer l'id si besoin //le B est en majuscule pour tester la resistance à la casse de GetNumberOfAllBirds
+var birds []Bird = []Bird{testbirdB}           //nécessaire pour les tests (voir Server_test.go)
 
 func RegisterNewBird(newBird Bird) {
 
@@ -25,29 +24,29 @@ func RegisterNewBird(newBird Bird) {
 
 }
 
-func GetNumberOfOneBird(birdName string) int { //ajouter option lowercase
+func GetNumberOfOneBird(birdName string) int {
 
-	a := 0
+	totalCountOfThisBird := 0
 
-	for _, b := range birds {
+	for _, bird := range birds {
 
-		if strings.ToLower(b.BirdName) == strings.ToLower(birdName) {
-			a++
+		if strings.ToLower(bird.BirdName) == strings.ToLower(birdName) {
+			totalCountOfThisBird++
 		}
 
 	}
 
-	if a == 0 {
+	if totalCountOfThisBird == 0 {
 		fmt.Printf("L'oiseau %v n'existe pas ou n'a jamais été aperçu pour l'instant.\n", birdName)
 	} else {
-		fmt.Printf("L'oiseau %v a été aperçu %v fois !\n", birdName, a)
+		fmt.Printf("L'oiseau %v a été aperçu %v fois !\n", birdName, totalCountOfThisBird)
 	}
 
-	return a
+	return totalCountOfThisBird
 
 }
 
-func GetNumberOfAllBirds() map[string]int { //ajouter option lowercase
+func GetNumberOfAllBirds() map[string]int {
 
 	BirdMap := make(map[string]int)
 
