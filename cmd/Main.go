@@ -6,6 +6,8 @@ import (
 
 	"github.com/EtienneLutaj/BirdComptingApp/server"
 
+	"flag"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -39,9 +41,15 @@ func GetBirds(context *gin.Context) {
 }
 
 func main() {
+
+	port := flag.String("port", "8080", "port paramétrable")
+
+	flag.Parse()
+
 	router := gin.Default()
 	router.POST("/bird", PostBird) // ne prend les JSON que 1 par 1 et ne prend pas de liste avec plusieurs JSON en entré.
 	router.GET("/bird/:birdname", GetBird)
 	router.GET("/bird", GetBirds)
-	router.Run("localhost:8080")
+	router.Run("localhost:" + *port)
+
 }
