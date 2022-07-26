@@ -6,20 +6,22 @@ import (
 )
 
 type Bird struct {
-	ID       string `json:"id"`
-	BirdName string `json:"birdname"`
-	//NumberOfBirds int    `json:"numberofbirds"`
+	ID            string `json:"id"`
+	BirdName      string `json:"birdname"`
+	NumberOfBirds int    `json:"numberofbirds"`
 }
 
-var testbirdB Bird = Bird{"7", "testbirdB"} //possibilité de changer l'id si besoin
+var testbirdB Bird = Bird{"7", "testbirdB", 1} //possibilité de changer l'id si besoin
 
 var birds []Bird = []Bird{testbirdB}
 
 func RegisterNewBird(newBird Bird) {
 
-	birds = append(birds, newBird)
+	for i := 0; i < newBird.NumberOfBirds; i++ {
+		birds = append(birds, newBird)
+	}
 
-	fmt.Printf("L'oiseau %v a bien été enregistré !\n", newBird.BirdName)
+	fmt.Printf("L'oiseau %v vient d'être enregistré %v fois !\n", newBird.BirdName, newBird.NumberOfBirds)
 
 }
 
