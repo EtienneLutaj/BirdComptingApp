@@ -32,8 +32,8 @@ func GetBird(context *gin.Context) { //GetBird sans s à ne pas confondre avec G
 }
 
 func GetBirds(context *gin.Context) { //GetBirds avec s !
-	BirdMap := server.GetNumberOfAllBirds()
-	context.IndentedJSON(http.StatusOK, BirdMap)
+	birdMap := server.GetNumberOfAllBirds()
+	context.IndentedJSON(http.StatusOK, birdMap)
 }
 
 func main() {
